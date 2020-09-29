@@ -23,3 +23,4 @@
 # Limitations
 - DPAPI unprotect must be done on the Windows Account used for RMS
 - MSIPP-SK deobfuscation can be done on any Windows 7 and above OS
+- Parsing and decryption of Publishing Licenses is currently not working
