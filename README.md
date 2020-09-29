@@ -1,5 +1,5 @@
 # Goal
-- Provide scripts that exctract all secrets from a users AD RMS account
+- Provide scripts that exctract all secrets from a users AD/Azure RMS or AIP account
   - This includes the Security Processer Certificate machine keys (public and private)
   - The public and private keys from Rights Account Certificate and Client Licensor Certificate
   - Exctraction of Use License content keys
