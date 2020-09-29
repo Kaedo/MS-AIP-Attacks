@@ -1,0 +1,401 @@
+<XrML xmlns="" version="1.2">
+<BODY type="LICENSE" version="3.0">
+<ISSUEDTIME>2019-11-07T13:09</ISSUEDTIME>
+<VALIDITYTIME>
+<FROM>2019-11-06T13:09</FROM>
+<UNTIL>2019-12-07T13:09</UNTIL>
+</VALIDITYTIME>
+<DESCRIPTOR>
+<OBJECT type="Group-Identity-Credential">
+<ID type="MS-GUID">{387d9f24-e7bd-4a27-bdb1-18388944bdce}</ID>
+</OBJECT>
+</DESCRIPTOR>
+<ISSUER>
+<OBJECT type="MS-DRM-Server">
+<ID type="MS-GUID">{d7e79aa0-b9ce-41d9-839a-b58d0f60dc19}</ID>
+<NAME>Kaedo Sec</NAME>
+<ADDRESS type="URL">https://d527de2a-b7c1-4a64-9900-1433176c4a84.rms.eu.aadrm.com/_wmcs</ADDRESS>
+</OBJECT>
+<PUBLICKEY>
+<ALGORITHM>RSA</ALGORITHM>
+<PARAMETER name="public-exponent">
+<VALUE encoding="integer32">65537</VALUE>
+</PARAMETER>
+<PARAMETER name="modulus">
+<VALUE encoding="base64" size="2048">5VMco+hc+yG6vZbP8SxVMczGBrerw/Xk7rELQAbX7wnslsiLvNc6cDt1SJxOTveKK5Zt69y2a9ub+MNSLa+JhiaNOjSbj+InSbiFB4Rl3ayy+pUC2OjFlQB4AGFTGh4zKnLnM08heTtFMe6yar86xGiAbsu4B2kbcG7tN51mLPw8Xazmvy/vcoLloBzp54TVUVGKFO31C59n9PrFT8TfBbku8CMP5TAep1kuktYjnHQ+t+Xy+VejnB8MNzk3xPqr36IT0GjRQzFIT/NyOV1Dr9lwfo4S+L/uOCELuYvi2L/M3+k3TlLJDtBDU2i+JtMzW8IlqVeW0OVQLqHWwC/x2g==</VALUE>
+</PARAMETER>
+</PUBLICKEY>
+<SECURITYLEVEL name="Server-Version" value="1.0.0.0" />
+<SECURITYLEVEL name="Server-SKU" value="RMS 2.0" />
+<SECURITYLEVEL name="Tenant-ID" value="{2f4c1049-906a-40ea-9178-4d64512b84ba}" />
+</ISSUER>
+<DISTRIBUTIONPOINT>
+<OBJECT type="Activation">
+<ID type="MS-GUID">{8BA9EA80-99E4-4a2b-9764-4CD84F77C3A0}</ID>
+<NAME>Microsoft Identity Certification Server</NAME>
+<ADDRESS type="URL">https://d527de2a-b7c1-4a64-9900-1433176c4a84.rms.eu.aadrm.com/_wmcs/certification</ADDRESS>
+</OBJECT>
+</DISTRIBUTIONPOINT>
+<DISTRIBUTIONPOINT>
+<OBJECT type="Extranet-Activation">
+<ID type="MS-GUID">{D6D00A01-6F00-471c-A32A-40DDF46D71D3}</ID>
+<NAME>Microsoft Identity Certification Server</NAME>
+<ADDRESS type="URL">https://d527de2a-b7c1-4a64-9900-1433176c4a84.rms.eu.aadrm.com/_wmcs/certification</ADDRESS>
+</OBJECT>
+</DISTRIBUTIONPOINT>
+<ISSUEDPRINCIPALS>
+<PRINCIPAL internal-id="1">
+<OBJECT type="Group-Identity">
+<ID type="Federation">{8ddcf196-d705-4cca-942d-6db785ede626}</ID>
+<NAME>alice@kaedo.onmicrosoft.com</NAME>
+<ADDRESS type="home_objectId">8ddcf196-d705-4cca-942d-6db785ede626</ADDRESS>
+<ADDRESS type="home_puid">1003200080EFD45B</ADDRESS>
+<ADDRESS type="home_tenantId">2f4c1049-906a-40ea-9178-4d64512b84ba</ADDRESS>
+<ADDRESS type="idp">https://sts.windows.net/2f4c1049-906a-40ea-9178-4d64512b84ba/</ADDRESS>
+</OBJECT>
+<PUBLICKEY>
+<ALGORITHM>RSA</ALGORITHM>
+<PARAMETER name="public-exponent">
+<VALUE encoding="integer32">65537</VALUE>
+</PARAMETER>
+<PARAMETER name="modulus">
+<VALUE encoding="base64" size="2048">nR0oCvED4t8gVmJWmRCDQfCMXL4U6QtH68gp4+97AT/btmHTTud7xED3eKO+MDpm4Roz+/VIAa01aWHg3SpzFEGlwTVCfXMuCT2xoBYJSXYEVhhK2onJ8++qxh/D9z8pNDjpQS42kZRuJBM6gwP2EEGOjBGvx7c0Luj9dtnK5i6QiVDmQz8YKjZsuZdkUBLVDGjr5HTaVMibXFWFA7W4LoPlSRspmExyThV9uIYlvneqvxxm/7n1kVpVyrofTT7svHY4oXCMmYnLs2HLyaC/YfhGTJoiLYM6Xei83xZ898tYzPhgCAIUiUlzjI+rha+R9fzX/W/EjBK6Cjy3nxWWsw==</VALUE>
+</PARAMETER>
+</PUBLICKEY>
+<SECURITYLEVEL name="Group-Identity-Type" value="Group" />
+<SECURITYLEVEL name="Group-Identity-Policy" value="Group-Identity-Credential" />
+<SECURITYLEVEL name="Group-Identity-Credential-Type" value="Persistent" />
+</PRINCIPAL>
+</ISSUEDPRINCIPALS>
+<AUTHENTICATEDDATA name="Microsoft.RMS.IssuedApplication" id="APPSPECIFIC">{d3590ed6-52b3-4102-aeff-aad2292ab01c}</AUTHENTICATEDDATA>
+<FEDERATIONPRINCIPALS>
+<PRINCIPAL>
+<OBJECT type="Machine-Unique-Identifier">
+<ID type="MS-GUID">{e8b8a625-a288-40e1-b51e-212f1f921274}</ID>
+<NAME>Machine</NAME>
+</OBJECT>
+<ENABLINGBITS type="sealed-key-v2">
+<VALUE encoding="base64" size="11904">B2WVRfIyik23E4oqeE0DQr4JX6rdEkcCkPgKsZqwGxFWKUP4vwsWayXq6V0jtq2n2nJ23xxJNIFjekCAbuZsV1Poc2oVHQTPTKVcvC9nc6Bv2eHubKTlYFY9fXfQB5VsVkEvrYUzEE4NUNTz22DLA8V455dcCKI4NM+nDX92+ZCWXNhx4V0S0kkS/4jv1l/F/voY38BZUCpn7wPr0iadzov25TT30zUA4hV9CgXlsYAU50nDsKU8NMuqWTPmHZTHP0Ihhe4SH4efmosDyVC38Qf6G/VAD/VJCHtjZnB+w7SvOsahmkNdl27dSISIltlDj9sccmn1HTvAj45/VKrgLpEornevO7kJwLq6mkXWLBHlTX30LxipHGzNwN2yneiZn4KFl5VBuPlroECGSGKTL8fFLYTjeTcClBOjFEKjDL9pToB/zfelgs8m88Qlf2Lta7QgRm5RBjczZy0OnFbLyniISaiDuAry8RV7i4oHmDLfLIGHGs7qIh0MzMWC5v2bUyPrCJcTogi/4W1PLaDzXckJzE9YBQhTMJEq5XJx4p0RZmdiEYnb1XwuxFkpdVIWfIgGKA6N761BQjjWF7IhIBqK+yL/EaZdPHJwk8nv/zUzmbCa9Z/Bysmsq7MRIesAdjBtOqM4sT4S3HYS2pGUWPULobt286l+OGGzcKyadNlb1EJwHb+G9n4lgpnCKkqeQyHuToCfrxyalVyD4R29kBsqNQbY80LRo8MXQQ12VjTIBpl5Rru1f4Bo2fdvIvarmio2xdvThHx5wGUHaEWser3vkwYZT9hhdIdX6N2TBo0WtdSrSL64dAsN3lKYFV/scuUy8Q0LXZ67LvRxSsO089ylBIIfI439HJQ2bQCLTTYMpq8YAyVvZjIa4ENqOyV7loNeYA+jQMJ9YPCMEPoSx4bgUNQ+2rhoWObVqXWd7m64PIMyppr458i6hQQ6YwUd0JeS4vr2ld5gJb1zjD4wnxY6BOhr5nzE+BXkDqQftXIxVVAsXtVj56AoMjKTW/lfyGyu8gCUB7UGt0W8x5Ik9rUgjipMytzAfiNVgW8rL1aiRcOiJalC+ypopz559Z6PslOlFbsDmp3w32Qm+mC3J85bqyJEl32NKGY4Q853pu3al3TYHgPPhATkuiPGJ3wkr1Hu+ywqD+oandBVXETjV+Z0d16OnKxPqkac2vWEBwbf0KvJrj1AeTlxZBNeYvZbZFFvh851viPJ6C6b1XCp2JdSBqQjiductPvPMG2N6R0T9YMQ+Tycgk4AdqbNzeaf5SDBbrpu0dOaDAuZ0JufvG28iOvwFqQAq3Cd3uDtBvHShgTRdT3cleCRt9OR6G2964ryRyL3AdkCgvlJpsiBUFnfS52Y++pYJ683mOlW1jpmOefOMfj0OANR7GeaThyskUIMbsC9ufw9r4suMtCMjkbudQA6FbTjPQnTZQTAzYDF0uSb/Z/arZ/pnG/69KUl89El4b6LIdwJljh/Sn5sgms0/I0FVBE3x31Ttcw1xaG/zm9sMcdc3Vx26R1A1n3G0TowKA+l4gV+9vz7Z+MRYzUb+4pltcwx21OP096JBo81QvnzqQUBdOJyBihaJPdCOEp67E7tY1xvjfYyPfKAbUXP3+jWQlMtRUiZ2uRAfJURyt5XMGpWE1Ikhaj5oM1mHuVDOKdtsYY5s72qeTOdH9uOAmbXWTiRkBj17OOZqhwliEnECj71P2lpfNpQAsA9Rl3bqTMzxC2LLlNJoaSXAZdw3Sah7IZFNTU5z2nFOULwPgqWfJG/TVhRk9v8uUSNQ3ZGDkSZexUNkusWiHBvo8qU6KxXp+jr7XgWQeUu2F3i5/MomU/7Nder3tE+M4Qx7EzdH5EvbI4jL6mRMNBPhw40+MfPLmsz9U9v7v7fmMIAQ9w/k5RG8W4jjPFJEsoZVZ2f+mAmDL/+z7fjSDUjDHN3cYyBUUDaVAcqV8kz4UfKYPFAUDc7gZVwvM286I2A</VALUE>
+</ENABLINGBITS>
+<SECURITYLEVEL name="Platform" value="2.10.0.18362" />
+<SECURITYLEVEL name="Manufacturer" value="Microsoft Corporation mcoregen DLL 999999.10.0.10011 (RMS Client v3.0 Desktop Security Processor)" />
+<SECURITYLEVEL name="Repository" value="Microsoft Corporation Windows RMS Client v3.0 secure repository 999999.10.0.10011" />
+</PRINCIPAL>
+</FEDERATIONPRINCIPALS>
+</BODY>
+<SIGNATURE>
+<DIGEST>
+<ALGORITHM>SHA256</ALGORITHM>
+<PARAMETER name="codingtype">
+<VALUE encoding="string">surface-coding</VALUE>
+</PARAMETER>
+<VALUE encoding="base64" size="256">qkf9tVwM9MoZmwcWLeH7wmxkdc3g5XHXvZoL7qvfNZ8=</VALUE>
+</DIGEST>
+<ALGORITHM>RSA PKCS#1-V1.5</ALGORITHM>
+<VALUE encoding="base64" size="2048">T2lSKlGEaEez5qUMNTIQlp0I8qrmNt9K/sYFD9M6JKKueXicn8TYn4T7PVssZSCwwq/uO49kGtQTATcvDEOdne+u97HOyZegptOa0roXSP1YboLG1psaeakBH+WoVA8VWouPosGTxGvGnmvXbpfz/HtuyjBdfTN8/599KdxS12TSVxQtfRPA9bJGFnlwSxtcqG7rA7dWhLpZwDXr7B4efSUata14Jkl6GQDP8CHmucsBFhzlNkHuEGvYAFdg2GwqOabQniNLnj270QSP50bLYvSpw7iXEhNzNDsqJ6PLx96YnKeRlcIoxoeEmiJAgT1oqG0kYzSdAw+Q0f8HvZV82g==</VALUE>
+</SIGNATURE>
+</XrML>
+<XrML xmlns="" version="1.2">
+<BODY type="LICENSE" version="3.0">
+<ISSUEDTIME>2019-10-29T08:59</ISSUEDTIME>
+<DESCRIPTOR>
+<OBJECT type="Server-Licensor-Certificate">
+<ID type="MS-GUID">{ebfc2077-26e9-4c88-9790-72f5e397ebfb}</ID>
+</OBJECT>
+</DESCRIPTOR>
+<ISSUER>
+<OBJECT type="MS-DRM-Server">
+<ID type="MS-GUID">{E40A03DB-9FE6-4233-8E6F-DEEA1BCDD4A2}</ID>
+<NAME>Microsoft DRM Server Self Enrollment Service</NAME>
+</OBJECT>
+<PUBLICKEY>
+<ALGORITHM>RSA</ALGORITHM>
+<PARAMETER name="public-exponent">
+<VALUE encoding="integer32">65537</VALUE>
+</PARAMETER>
+<PARAMETER name="modulus">
+<VALUE encoding="base64" size="2048">UanZ+MqujIC8SZCXpqQeQOYb1KKrJXc0/lhnqmuY+v+RkmUuDnrCRHO4WvyRunvEok+/YXGkk6AgYnXTa8jV4i25FVjx/EnbkLqsNQmGOV5F1jrL+LJcyf5UOu+xdvEYj7jfsaOxNzl/apM5rK+yPfE41hOHPkKhFgv+MY8EsAoSlrngqv3kjlfIt607BSL7CgGeLG8BZ7pED/SGB35HQ+vebsNaADCTBq9B/aWn2DLLhhRGWRykdXGqfz9VX2u0Kz/B4gufGUbA0y7tnRWDV7ZFrcxYgunkMAOMlEE3BdSk4EZG647KYTwlH8NSc7cJHjbC+LaR9p+RWY0V5aJb0Q==</VALUE>
+</PARAMETER>
+</PUBLICKEY>
+</ISSUER>
+<ISSUEDPRINCIPALS>
+<PRINCIPAL internal-id="1">
+<OBJECT type="MS-DRM-Server">
+<ID type="MS-GUID">{d7e79aa0-b9ce-41d9-839a-b58d0f60dc19}</ID>
+<NAME>Kaedo Sec</NAME>
+<ADDRESS type="URL">https://d527de2a-b7c1-4a64-9900-1433176c4a84.rms.eu.aadrm.com/_wmcs</ADDRESS>
+</OBJECT>
+<PUBLICKEY>
+<ALGORITHM>RSA</ALGORITHM>
+<PARAMETER name="public-exponent">
+<VALUE encoding="integer32">65537</VALUE>
+</PARAMETER>
+<PARAMETER name="modulus">
+<VALUE encoding="base64" size="2048">5VMco+hc+yG6vZbP8SxVMczGBrerw/Xk7rELQAbX7wnslsiLvNc6cDt1SJxOTveKK5Zt69y2a9ub+MNSLa+JhiaNOjSbj+InSbiFB4Rl3ayy+pUC2OjFlQB4AGFTGh4zKnLnM08heTtFMe6yar86xGiAbsu4B2kbcG7tN51mLPw8Xazmvy/vcoLloBzp54TVUVGKFO31C59n9PrFT8TfBbku8CMP5TAep1kuktYjnHQ+t+Xy+VejnB8MNzk3xPqr36IT0GjRQzFIT/NyOV1Dr9lwfo4S+L/uOCELuYvi2L/M3+k3TlLJDtBDU2i+JtMzW8IlqVeW0OVQLqHWwC/x2g==</VALUE>
+</PARAMETER>
+</PUBLICKEY>
+<SECURITYLEVEL name="Server-Version" value="1.0.0.0" />
+<SECURITYLEVEL name="Server-SKU" value="RMS 2.0" />
+<SECURITYLEVEL name="Tenant-ID" value="{2f4c1049-906a-40ea-9178-4d64512b84ba}" />
+</PRINCIPAL>
+</ISSUEDPRINCIPALS>
+<WORK>
+<OBJECT type="Server-Licensor-Certificate">
+<ID type="MS-GUID">{ebfc2077-26e9-4c88-9790-72f5e397ebfb}</ID>
+</OBJECT>
+<RIGHTSGROUP name="Main-Rights">
+<RIGHTSLIST>
+<RIGHT name="ISSUE">
+<CONDITIONLIST>
+<TIME>
+<RANGETIME>
+<FROM>2002-12-05T01:07</FROM>
+<UNTIL>2258-03-03T21:33</UNTIL>
+</RANGETIME>
+</TIME>
+<ACCESS>
+<PRINCIPAL internal-id="1" />
+</ACCESS>
+</CONDITIONLIST>
+</RIGHT>
+</RIGHTSLIST>
+</RIGHTSGROUP>
+</WORK>
+</BODY>
+<SIGNATURE>
+<DIGEST>
+<ALGORITHM>SHA256</ALGORITHM>
+<PARAMETER name="codingtype">
+<VALUE encoding="string">surface-coding</VALUE>
+</PARAMETER>
+<VALUE encoding="base64" size="256">wr5ckzhWlwKG50/ZUViBsnhxlBjHV1BBfdtKeovyD+E=</VALUE>
+</DIGEST>
+<ALGORITHM>RSA PKCS#1-V1.5</ALGORITHM>
+<VALUE encoding="base64" size="2048">fcu+Ee6KMh5pFK13VBbgY8eXyc46pZ2tWe9gXZ6T2goS4jLhmn8ezo8znkzIbOOo6qpQLvxjGwlHzHu9VIneumnZ6/775SXHLzWtNPBm78UgiQYj+aI6HWN/JjvJtVmIv3zHZls7HBfF7v8pNuk7SXBZ+F6xGLXERaG1dQjaz8a6W4sl2A3I60f02PkZZ8Tkt1WKhO0jZIOqmVX6n7KMzuPYqA1wGZmGMY47UNMVDmaBB/qT4y9NUeEovJINVeKY9HMEjPKdncpVUdu0In/MInlrPpnTKfMyLpD3oboWRazKliyCGxyDrt02m2hNLkgSFi+SJxgGUsKR5qrqpLzj4A==</VALUE>
+</SIGNATURE>
+</XrML>
+<XrML xmlns="" version="1.2">
+<BODY type="LICENSE" version="3.0">
+<ISSUEDTIME>2008-05-02T21:33</ISSUEDTIME>
+<DESCRIPTOR>
+<OBJECT type="Server-Licensor-Certificate">
+<ID type="MS-GUID">{c055a4ce-8875-4533-b4d2-22c26ecb6537}</ID>
+</OBJECT>
+</DESCRIPTOR>
+<ISSUER>
+<OBJECT type="DRM-Certificate-Authority">
+<ID type="ascii-tag">Microsoft DRM Production Server Enrollment CA</ID>
+<NAME>Microsoft DRM Production Server Enrollment CA</NAME>
+</OBJECT>
+<PUBLICKEY>
+<ALGORITHM>RSA</ALGORITHM>
+<PARAMETER name="public-exponent">
+<VALUE encoding="integer32">65537</VALUE>
+</PARAMETER>
+<PARAMETER name="modulus">
+<VALUE encoding="base64" size="2048">G1PpFsUZhM47aD0S473paOmXkZ6jmDP0IReJifCRN0NWxJ49wVglcJNYHcxm3+Is450jewVPs+K/HP7W+XtFOzuZZOele5YdkiDAOyi+qRn3l+UdYQX2KIiJoDRXnXyY6Nf4uc7ynSJKCaJakmmQF/hZr0WC219khfL9oE7Tr74bjM73i5r/s2oYVzXdcp6/mNgKy4wwXxpBhaT46tPiJdu8/DAyYqvi8jjUdBewKYyRTMYn4t1RV0nbjPi2rEsCC9cQR23ecSpciZDKAVPCmBWwWZS2EwvaNFgLj5va9owK+Aauf9/UDKXIdXE36BOHpApU4YGiJtqyCAnhjQfjtA==</VALUE>
+</PARAMETER>
+</PUBLICKEY>
+</ISSUER>
+<ISSUEDPRINCIPALS>
+<PRINCIPAL internal-id="1">
+<OBJECT type="MS-DRM-Server">
+<ID type="MS-GUID">{E40A03DB-9FE6-4233-8E6F-DEEA1BCDD4A2}</ID>
+<NAME>Microsoft DRM Server Self Enrollment Service</NAME>
+</OBJECT>
+<PUBLICKEY>
+<ALGORITHM>RSA</ALGORITHM>
+<PARAMETER name="public-exponent">
+<VALUE encoding="integer32">65537</VALUE>
+</PARAMETER>
+<PARAMETER name="modulus">
+<VALUE encoding="base64" size="2048">UanZ+MqujIC8SZCXpqQeQOYb1KKrJXc0/lhnqmuY+v+RkmUuDnrCRHO4WvyRunvEok+/YXGkk6AgYnXTa8jV4i25FVjx/EnbkLqsNQmGOV5F1jrL+LJcyf5UOu+xdvEYj7jfsaOxNzl/apM5rK+yPfE41hOHPkKhFgv+MY8EsAoSlrngqv3kjlfIt607BSL7CgGeLG8BZ7pED/SGB35HQ+vebsNaADCTBq9B/aWn2DLLhhRGWRykdXGqfz9VX2u0Kz/B4gufGUbA0y7tnRWDV7ZFrcxYgunkMAOMlEE3BdSk4EZG647KYTwlH8NSc7cJHjbC+LaR9p+RWY0V5aJb0Q==</VALUE>
+</PARAMETER>
+</PUBLICKEY>
+</PRINCIPAL>
+</ISSUEDPRINCIPALS>
+<WORK>
+<OBJECT type="Server-Licensor-Certificate">
+<ID type="MS-GUID">{c055a4ce-8875-4533-b4d2-22c26ecb6537}</ID>
+</OBJECT>
+<RIGHTSGROUP name="Main-Rights">
+<RIGHTSLIST>
+<RIGHT name="ISSUE">
+<CONDITIONLIST>
+<TIME>
+<RANGETIME>
+<FROM>2002-12-05T01:07</FROM>
+<UNTIL>2258-03-03T21:33</UNTIL>
+</RANGETIME>
+</TIME>
+<ACCESS>
+<PRINCIPAL internal-id="1" />
+</ACCESS>
+</CONDITIONLIST>
+</RIGHT>
+</RIGHTSLIST>
+</RIGHTSGROUP>
+</WORK>
+</BODY>
+<SIGNATURE>
+<DIGEST>
+<ALGORITHM>SHA256</ALGORITHM>
+<PARAMETER name="codingtype">
+<VALUE encoding="string">surface-coding</VALUE>
+</PARAMETER>
+<VALUE encoding="base64" size="256">ZOuOdob5NsaSvaNHU1Lit+qpO6+W/ZeGd1AxbEyQ8lc=</VALUE>
+</DIGEST>
+<ALGORITHM>RSA PKCS#1-V1.5</ALGORITHM>
+<VALUE encoding="base64" size="2048">nIAJC+HWLzVc5lG+kbG9wT/UvALIVg/eNL8veJcC1HEiO1Fr+UWxnxYH0AccLVwt6ymzYREznCGDnC+QpeM8HtqWzP/ITjRzW3Nmf8Ht0dLhglQgKwCDn5lI8/KXiaUVMbK4S1iXV7jIPh8Ebf4DUyKHc2Bvsm7PgjmmjUnQB1hcISV1etXmLdrX0JSGmpIZ1nJB9ACxbriU3s3XT2OM2BWdLT5Gb+ktNLtdd8TJ263MVmZ5Uf0/rmfY8WBhTa0szK65bGgpF3PimXHot2GE3PWOHaQHPByMWa7R8bTjiB93hVeWdvZIBtA7VfDnHFyAezIpa4kjAF6/r5uAupRqsg==</VALUE>
+</SIGNATURE>
+</XrML>
+<XrML xmlns="" version="1.2">
+<BODY type="LICENSE" version="3.0">
+<ISSUEDTIME>2008-04-23T19:13</ISSUEDTIME>
+<DESCRIPTOR>
+<OBJECT type="DRM-CA-Certificate">
+<ID type="MS-GUID">{1818f911-fbe4-4ae0-bcf9-aa48b36f87c4}</ID>
+</OBJECT>
+</DESCRIPTOR>
+<ISSUER>
+<OBJECT type="DRM-Certificate-Authority">
+<ID type="ascii-tag">Microsoft DRM Production CA</ID>
+<NAME>Microsoft DRM Production CA</NAME>
+</OBJECT>
+<PUBLICKEY>
+<ALGORITHM>RSA</ALGORITHM>
+<PARAMETER name="public-exponent">
+<VALUE encoding="integer32">65537</VALUE>
+</PARAMETER>
+<PARAMETER name="modulus">
+<VALUE encoding="base64" size="2048">NQrYSAc43V7NRTW8VT5E2XhMcwmmON7TkQ7ETUIWGqlPTvFSw798gFgIXBcFMtCdIyf3VMO5YGOKJD1wnc2ydlozf16VHF5UrFgtkT/9uK7uRshjyH516H/cCKJyIyPaYEkW+pI7x8+cfgVcUXZ/oCrFHdueXLS4ce/nals45qx5qqcdM7Y08o5a1kX/yoiPLbo9mKS/NlzEfcRvRNiAC6WqlIv8MgNxpAmU7FRUHTPck/gO9X0afh7VkwRq33TjrCS+UidoxwOI2E0DKMmtgUMA2u04O/fgR0LeUruTYYj+Qz2II82qcz7+fetEdUsvKKa1ZBK8Fnmw1BFPeoyX9g==</VALUE>
+</PARAMETER>
+</PUBLICKEY>
+</ISSUER>
+<ISSUEDPRINCIPALS>
+<PRINCIPAL internal-id="1">
+<OBJECT type="DRM-Certificate-Authority">
+<ID type="ascii-tag">Microsoft DRM Production Server Enrollment CA</ID>
+<NAME>Microsoft DRM Production Server Enrollment CA</NAME>
+</OBJECT>
+<PUBLICKEY>
+<ALGORITHM>RSA</ALGORITHM>
+<PARAMETER name="public-exponent">
+<VALUE encoding="integer32">65537</VALUE>
+</PARAMETER>
+<PARAMETER name="modulus">
+<VALUE encoding="base64" size="2048">G1PpFsUZhM47aD0S473paOmXkZ6jmDP0IReJifCRN0NWxJ49wVglcJNYHcxm3+Is450jewVPs+K/HP7W+XtFOzuZZOele5YdkiDAOyi+qRn3l+UdYQX2KIiJoDRXnXyY6Nf4uc7ynSJKCaJakmmQF/hZr0WC219khfL9oE7Tr74bjM73i5r/s2oYVzXdcp6/mNgKy4wwXxpBhaT46tPiJdu8/DAyYqvi8jjUdBewKYyRTMYn4t1RV0nbjPi2rEsCC9cQR23ecSpciZDKAVPCmBWwWZS2EwvaNFgLj5va9owK+Aauf9/UDKXIdXE36BOHpApU4YGiJtqyCAnhjQfjtA==</VALUE>
+</PARAMETER>
+</PUBLICKEY>
+</PRINCIPAL>
+</ISSUEDPRINCIPALS>
+<WORK>
+<OBJECT type="DRM-CA-Certificate">
+<ID type="MS-GUID">{1818f911-fbe4-4ae0-bcf9-aa48b36f87c4}</ID>
+</OBJECT>
+<RIGHTSGROUP name="Main-Rights">
+<RIGHTSLIST>
+<RIGHT name="ISSUE">
+<CONDITIONLIST>
+<TIME>
+<RANGETIME>
+<FROM>2002-12-05T01:07</FROM>
+<UNTIL>2020-04-20T19:13</UNTIL>
+</RANGETIME>
+</TIME>
+<ACCESS>
+<PRINCIPAL internal-id="1" />
+</ACCESS>
+</CONDITIONLIST>
+</RIGHT>
+</RIGHTSLIST>
+</RIGHTSGROUP>
+</WORK>
+</BODY>
+<SIGNATURE>
+<DIGEST>
+<ALGORITHM>SHA256</ALGORITHM>
+<PARAMETER name="codingtype">
+<VALUE encoding="string">surface-coding</VALUE>
+</PARAMETER>
+<VALUE encoding="base64" size="256">HNzSVMWSUQnRfDs9TsBbUNaA+7r3vuyE9eyKdLMT61E=</VALUE>
+</DIGEST>
+<ALGORITHM>RSA PKCS#1-V1.5</ALGORITHM>
+<VALUE encoding="base64" size="2048">l0Fcv/Qhe5rmVAWLkP+Lu7s8ap5/zkEjscJqEFylPdupNmsicuSuwen50HE2vunvMHQaYzp1Iu4CVXmCtXlt5Md5152JlmV4VStnaaVd6euvD/T5t1G1rWVTXL3ZOb1n+ekqpGRVoEGNJNkPqtsdPM/yDfa2Mj4GSWIGjuGFTjDy9mDBkUdxqghIZuhWhyztyoUkDKEOGsEmnUM+lUaf6QNMMaDNnIqfLfxEKmiS+IIpmm8G/M24GXQ5doBRiboDM4izFbCaTSyZ8+t61o0tQeqAWz+RUjgbCD/8N3zRtpx57yTYxxLPhxofZk7BrJBODrn12HWOe82QsX+WiKp5oA==</VALUE>
+</SIGNATURE>
+</XrML>
+<XrML xmlns="" version="1.2">
+<BODY type="LICENSE" version="3.0">
+<ISSUEDTIME>2008-04-23T19:12</ISSUEDTIME>
+<DESCRIPTOR>
+<OBJECT type="DRM-CA-Certificate">
+<ID type="MS-GUID">{1028a0ac-c4ae-4b32-9eca-d2fd997cce2c}</ID>
+</OBJECT>
+</DESCRIPTOR>
+<ISSUER>
+<OBJECT type="DRM-Certificate-Authority">
+<ID type="ascii-tag">Microsoft DRM Production Root</ID>
+<NAME>Microsoft DRM Production Root</NAME>
+</OBJECT>
+<PUBLICKEY>
+<ALGORITHM>RSA</ALGORITHM>
+<PARAMETER name="public-exponent">
+<VALUE encoding="integer32">65537</VALUE>
+</PARAMETER>
+<PARAMETER name="modulus">
+<VALUE encoding="base64" size="2048">XylCwSoow3MdnsVPkTtwIY5rk647bS64Nf7M2HS8klRk5ahhcMx9VOlntzqX3SYyqxoXQFDR/kTWVTpbXVMsSYLxqr+WD1jTdHsv//79QwHtrKhLMR7jcLcMnXfAE39KaUAZg3dFSEt+JYbZboSjPeJo6D1aZmcZvladrIq+KpBqbgIEqabqPAgG8/IbhtNblaDkTo7ev+AuIWec9EjHJCYk0TSzJf423iHZYJXDMz081OBrKY+jMtqk8aMpiqvcX6mv7mT7IwYw9aEklx+3pmLqBY87VWzlxFK88jl5CLHbJqxL5iwC3VpfVz0Ualng1KtDqZmcZdjwPcQc3RMxlg==</VALUE>
+</PARAMETER>
+</PUBLICKEY>
+</ISSUER>
+<ISSUEDPRINCIPALS>
+<PRINCIPAL internal-id="1">
+<OBJECT type="DRM-Certificate-Authority">
+<ID type="ascii-tag">Microsoft DRM Production CA</ID>
+<NAME>Microsoft DRM Production CA</NAME>
+</OBJECT>
+<PUBLICKEY>
+<ALGORITHM>RSA</ALGORITHM>
+<PARAMETER name="public-exponent">
+<VALUE encoding="integer32">65537</VALUE>
+</PARAMETER>
+<PARAMETER name="modulus">
+<VALUE encoding="base64" size="2048">NQrYSAc43V7NRTW8VT5E2XhMcwmmON7TkQ7ETUIWGqlPTvFSw798gFgIXBcFMtCdIyf3VMO5YGOKJD1wnc2ydlozf16VHF5UrFgtkT/9uK7uRshjyH516H/cCKJyIyPaYEkW+pI7x8+cfgVcUXZ/oCrFHdueXLS4ce/nals45qx5qqcdM7Y08o5a1kX/yoiPLbo9mKS/NlzEfcRvRNiAC6WqlIv8MgNxpAmU7FRUHTPck/gO9X0afh7VkwRq33TjrCS+UidoxwOI2E0DKMmtgUMA2u04O/fgR0LeUruTYYj+Qz2II82qcz7+fetEdUsvKKa1ZBK8Fnmw1BFPeoyX9g==</VALUE>
+</PARAMETER>
+</PUBLICKEY>
+</PRINCIPAL>
+</ISSUEDPRINCIPALS>
+<WORK>
+<OBJECT type="DRM-CA-Certificate">
+<ID type="MS-GUID">{1028a0ac-c4ae-4b32-9eca-d2fd997cce2c}</ID>
+</OBJECT>
+<RIGHTSGROUP name="Main-Rights">
+<RIGHTSLIST>
+<RIGHT name="ISSUE">
+<CONDITIONLIST>
+<TIME>
+<RANGETIME>
+<FROM>2002-12-05T01:07</FROM>
+<UNTIL>2020-04-20T19:12</UNTIL>
+</RANGETIME>
+</TIME>
+<ACCESS>
+<PRINCIPAL internal-id="1" />
+</ACCESS>
+</CONDITIONLIST>
+</RIGHT>
+</RIGHTSLIST>
+</RIGHTSGROUP>
+</WORK>
+</BODY>
+<SIGNATURE>
+<DIGEST>
+<ALGORITHM>SHA256</ALGORITHM>
+<PARAMETER name="codingtype">
+<VALUE encoding="string">surface-coding</VALUE>
+</PARAMETER>
+<VALUE encoding="base64" size="256">qd7gCOY5ev2bli37IIX1LD0/aIeNkiMLkcKwOF/5zS0=</VALUE>
+</DIGEST>
+<ALGORITHM>RSA PKCS#1-V1.5</ALGORITHM>
+<VALUE encoding="base64" size="2048">J8dU7N/ozOkRYIn4Lgb4FWp+E8FZ4LjrgjqvJkXBLrJC+P0LB00eEQFFJid6hDW9R+FP3/8nJAqVnjGHv86avhFQY43BI6iKyt7HOwERKxw9nQguj73JtGLDMEWHs3iVHp465bW8lrG/FHjySQ9vm0ydXfm76ljfUil3/YYoJmQfMB8bVBp3Aqxfiu6quH26+UeqOyUyOuNcmq9AfaKBYHJx7hGoGe8bdPY3yvYGQk+BO9j/s12dVRTIOvvh2mFIVooI5Ouct1FQRYpRSW8LqCDZ6hA6XcV3pzmgrsfAjmQ77DVGXTZ4YDBBD53Mi3EOfrgXBTtJHa+6YNxjUlfwbQ==</VALUE>
+</SIGNATURE>
+</XrML>
