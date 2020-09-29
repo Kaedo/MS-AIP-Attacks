@@ -3,6 +3,7 @@
   - This includes the Security Processer Certificate machine keys (public and private)
   - The public and private keys from Rights Account Certificate and Client Licensor Certificate
   - Exctraction of Use License content keys
+  - Decrypt and encrypt documents under this content key.
 
 ### Note
 - Bash scripts
