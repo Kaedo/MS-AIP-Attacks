@@ -1,8 +1,16 @@
 # Goal
-- Provide scripts that exctract all secrets from a users AD RMS account
+- Provide scripts that exctract all secrets from a users AD/Azure RMS or AIP account
   - This includes the Security Processer Certificate machine keys (public and private)
   - The public and private keys from Rights Account Certificate and Client Licensor Certificate
   - Exctraction of Use License content keys
+  - Decrypt and encrypt documents under this content key.
+
+### Youtube
+- You can find my video series "Azure Information Protection under the hood" on Youtube explaining the background of this scripts in much more detail.
+  - [01 - Create and Open a protected Word document](https://www.youtube.com/watch?v=aikT8zQAXqc)
+  - [02 - Generating and protecting the SPC and private key](https://www.youtube.com/watch?v=hHQ2yeo24uI)
+  - [03 - Unprotect an AIP Word file](https://www.youtube.com/watch?v=YAd3Bsi7SV0)
+  - [04 - Modify and Reprotect an AIP Word file](https://www.youtube.com/watch?v=6vCPAFJB_gU)
 
 ### Note
 - Bash scripts
@@ -23,3 +31,7 @@
 # Limitations
 - DPAPI unprotect must be done on the Windows Account used for RMS
 - MSIPP-SK deobfuscation can be done on any Windows 7 and above OS
+- Parsing and decryption of Publishing Licenses is currently not working
+
+# Dissertation
+- If you want more structured information about AD/Azure RMS and AIP you can find my dissertation [online](https://mgrothe.de/posts/dissertation-phd-research-security-microsoft-rms-ad-azure-information-protection-cisco-huawei-ipsec-bleichenbacher/)
