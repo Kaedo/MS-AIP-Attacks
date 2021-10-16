@@ -1,0 +1,376 @@
+Since the word 'descriptor'(or the shorthand 'desc') is thrown around
+in supyr so often, I thought it would be best to explain what it is in
+a single readme rather than have it spread throughout multiple modules.
+
+Also, I am aware that the word 'descriptor' already has a python specific
+meaning. I had already been using it for a year before I found out though.
+I've decided to keep using it since the word fits perfectly and I cant
+imagine people accidentally confusing the two(at least not for very long).
+
+
+-------------------------------------------------------------------------------
+What are descriptors?
+
+Descriptors are nothing more than dictionaries used for describing
+an object that represents some sort of binary data or structure.
+All descriptors have a 'TYPE' key with a FieldType instance in it.
+The TYPE entry provides the most general of the attributes used to describe
+the object. The other entries in the descriptor provide the more specific
+attributes, such as the objects name and offset in a structure.
+
+Descriptors should be immutable, as a single descriptor is intended
+to be referenced by many thousands of objects(or more). When a descriptor
+is created by a BlockDef, the BlockDef converts it into a FrozenDict.
+
+
+-------------------------------------------------------------------------------
+Where/how are descriptors used?
+
+Here are the main places in the library that use descriptors
+and a brief summary of how/why they use them.
+
+###  Blocks  ###
+################
+All Blocks store a reference to a descriptor in the __slot__ 'desc'.
+This descriptor is used to 'describe' the Block and the nodes in it.
+
+Descriptors are also used while building/serializing nodes so that
+functions know what to read/write, where to read/write it, how to
+read/write it, and they are used to describe how certain attributes
+rely on others(an int specifying a strings length for example).
+
+
+###  BlockDefs  ###
+###################
+BlockDefs store in their 'descriptor' attribute the descriptor
+which they have generated. A BlockDef gives this descriptor to
+the first Block they create when their 'build' method is invoked.
+
+
+###  Other descriptors  ###
+###########################
+Descriptors are also, by necessity, stored inside other descriptors.
+For example, a descriptor describing a struct also stores descriptors
+for the members of the struture, like ints, floats, strings, etc.
+
+When a descriptor is meant to describe some kind of object that is not
+a Block, the descriptor must be inside another descriptor, which is
+itself inside a Block. This may sound confusing, so here's an example:
+
+asdf = Struct('some_struct',
+     UInt8('some_int8'),
+     UInt16('some_int16'),
+     UInt32('some_int32')
+     )
+
+asdf will be a descriptor that contains descriptors for the nodes
+'some_int8', 'some_int16', and 'some_int32'. While a Struct can be expressed
+as a ListBlock(and can thus have a descriptor), the int attributes of the
+struct are regular python ints, which cannot have extra attributes.
+
+When a Block is built and its descriptor contains descriptors for other
+nodes(child nodes), the descriptors of these children are given to them
+as a reference when they are created. Because of this, a Block is able
+to build any other Blocks contained in it since it has their descriptors.
+
+
+-------------------------------------------------------------------------------
+What do descriptors do?
+
+The main thing they do is provide static attributes and attribute alias's.
+
+Descriptors store a dictionary under the key 'NAME_MAP', which maps
+the given name of each node in a Block to the attribute name it
+can actually be found under. For ListBlocks, this can also instead
+be the index in the list that the node is actually located in.
+
+To better understand, here is the __getattr__ method of Block:
+
+def __getattr__(self, attr_name):
+    try:
+        return object.__getattribute__(self, attr_name)
+    except AttributeError:
+        desc = object.__getattribute__(self, "desc")
+
+        if attr_name in desc['NAME_MAP']:
+            return self[desc['NAME_MAP'][attr_name]]
+        elif attr_name in desc:
+            return desc[attr_name]
+        raise AttributeError("'%s' of type %s has no attribute '%s'" %
+                             (desc.get('NAME', 'UNNAMED'),
+                              type(self), attr_name))
+
+As you can see, one can refer to nodes in a Block by alias names
+stored in the NAME_MAP, and one can also access values in
+the descriptor as if they were attributes in the Block.
+
+These two lines function the same:
+    asdf = some_block[some_block.desc['NAME_MAP']['some_attribute']]
+    asdf = some_block.some_attribute
+
+These two lines also function the same:
+    qwer = some_block.desc['TYPE']
+    qwer = some_block.TYPE
+
+In this way, descriptors act similarly to an objects __dict__, but without
+the ability to edit it freely.
+
+
+-------------------------------------------------------------------------------
+Why is this "descriptor" concept even needed?
+
+###  Memory efficiency  ###
+###########################
+Most reasons for this system all stem from memory efficiency. When you have
+ten thousand identical structures(albeit with differing contents) you incur
+a huge ugly overhead for all attributes that are ALWAYS shared between them.
+
+Descriptors were invisioned as a way to give objects generic attributes that
+can be reused without any memory overhead. The NAME_MAP descriptor entry
+combined with a ListBlock take this a step further. The NAME_MAP allows the
+objects in the lists indices to be accessed by a name, but a list only uses
+4 bytes per index(32bit reference pointer). This allows ListBlocks to have
+mutable named attributes at only the 4 byte cost of referencing the object.
+
+This is also why Blocks implement __slots__; one for a descriptor, one for
+the parent of the Block, and(sometimes) one for a steptree.
+
+
+###  Independent functioning  ###
+#################################
+The other important reason for this system is that it allows Blocks to carry
+a context around with them which enables them to function independently from
+whatever parser built them. Because the parsing/serializing system exists
+entirely in the descriptor, Blocks can parse/serialize themselves without
+requiring an outside object to do it for them.
+
+This also allows intermixing Blocks that are identical when serialized.
+For example, one could replace an ip address Block that contains 4 UInt8
+fields with a Block containing a string formatted as "aaa.bbb.ccc.ddd"(so
+long as the serializer converts the string to 4 bytes before writing it).
+
+
+###  Globally variable attributes  ###
+######################################
+While this is not something that anyone should use unless they have a VERY
+good reason to, there is another thing they allow; modifying globally shared
+attributes. FrozenDicts are made to be as immutable as possible while keeping
+the same speed as a dict, so they still function as a dict under the hood.
+While the __setattr__ and __delattr__ methods have been overridden to prevent
+changes, one can still call dict.__setattr__ or dict.__delattr__ to override
+the immutability.
+
+I cannot emphasive enough that this is bad practice, but in the cases where
+one has thousands of structures that must be converted to some other structure
+and then serialized, it's far faster to edit the descriptor temporarily.
+Again, this is NOT good practice and is very dangerous, but it has its uses.
+
+
+-------------------------------------------------------------------------------
+What is in a descriptor?
+
+Only two types of keys are expected to be in a descriptor; ints and strings.
+
+A minimal descriptor contains 'TYPE' and 'NAME' entries. If the descriptor
+is intended to describe a Block, it must also have a 'NAME_MAP' entry. The
+TYPE entry is a reference to the FieldType instance which provides most of the
+static attributes to describe the node. The NAME entry is simply a string
+that the node is referenced by when in another Block.
+
+
+###  Integer keys  ###
+######################
+Integers keyed entries are other descriptors which make up ordered entries
+in the node that the descriptor is intended to describe. Most of the time
+these ordered entries are other nodes within the node, but for some Blocks
+like EnumBlock and BoolBlock they can be descriptions of options and
+settings that the Block can be set to. It all depends on the Block.
+
+
+###  String keys  ###
+#####################
+String keyed entries vary in purpose, but they are mostly supplementary
+information that helps describe the node. For example, the 'SIZE' entry
+is intended to store something specifying the serialized size of the node.
+'SUB_STRUCT' on the other hand, stores a descriptor which is given to each
+of the nodes in the ArrayBlock. If the SUB_STRUCT descriptor has a Switch
+FieldType as its TYPE entry, you basically have an array of mixed node types.
+
+Different Block subclasses may each have different requirements on what
+should be in their descriptor. Using the example from before, ArrayBlocks
+must have a SUB_STRUCT entry in their descriptor. This SUB_STRUCT entry
+is used for building more Blocks in the array and/or knowing how to
+treat/serialize the data when the objects contained in the ArrayBlock are
+not Blocks themselves.
+
+
+-------------------------------------------------------------------------------
+What are all the entries that can be used in a descriptor?
+
+This is mostly copied from the supyr_struct.defs.constants.py
+file, but with a few edits and extra information.
+
+
+These are the most important and most used keywords
+
+NAME ----------- The given name of a node. This is copied into the NAME_MAP
+                 entry in the nodes parents descriptor.
+                 Must be a string.
+
+TYPE ----------- The FieldType that best describes the node.
+                 Must be a FieldType.
+
+SIZE ----------- Specifies an arrays entry count, a structs byte size, 
+                 the length of a string, the length of a bytes object, etc.
+                 Must be an int, function, or a nodepath.
+
+SUB_STRUCT ----- The descriptor to repeat in an array or the
+                 descriptor that is wrapped in a StreamAdapter.
+                 Must be a descriptor.
+
+CASE ----------- Specifies which descriptor to use for a Switch field.
+                 Must be an int, function, or a nodepath.
+                 If used in a WhileArray, this must be a function
+                 and must return a bool specifying whether or not
+                 another Block should be built.
+
+CASES ---------- Contains all the different possible descriptors that can
+                 be chosen by the Union/Switch block it is enclosed in.
+                 CASE determines which key to look for the descriptor
+                 under. If the descriptor doesnt exist under that key,
+                 a VoidBlock with a void_desc is built instead.
+                 Must be a dict.
+
+VALUE ---------- The value of a specific enumerator/boolean option.
+                 If not specified, one will be deduced. The position 'i'
+                 is the integer key of the option in the descriptor plus
+                 the amount of padding before it. For bools, VALUE will
+                 default to '2**i'. Otherwise it will default to 'i'.
+                 Must be an int, str, or bytes.
+
+DECODER -------- A function used to decode and return a Buffer for
+                 a StreamAdapter field before it is handed off
+                 to be parsed by the StreamAdapter's SUB_STRUCT.
+                 Also returns how much of the input stream was decoded.
+                 Must be a function.
+
+
+
+These are supplementary keywords that give more control
+over creating a structure, how and where to read/write, etc
+
+ALIGN ---------- The byte size to align the offset to before reading or
+                 writing. Alignment is done using this method:
+                     offset += (align - (offset % align)) % align
+                 Must be an int.
+
+INCLUDE -------- This one is more of a convience. When a dict is in
+                 a descriptor under this key and the descriptor is
+                 sanitized, all entries in that dict are copied into
+                 the descriptor if the entries dont already exist.
+                 Must be a dict.
+
+DEFAULT -------- Used to specify what the value of some attribute
+                 should be in a field when a blank structure is created.
+                 Must be an instance of descriptor['TYPE'].py_type, or
+                 in other words the py_type attribute of the TYPE entry.
+
+BLOCK_CLS ------ Specifies the Block class to be constructed
+                 when this descriptor is used to build a Block.
+                 If not provided, defaults to the py_type attribute
+                 of the TYPE entry:
+                     descriptor['TYPE'].py_type
+                 Must be a Block class.
+
+ENDIAN --------- Specifies which endianness instance of a FieldType to use.
+                 This is only used by BlockDefs during their sanitization
+                 process. If not given, the FieldType that already exists in
+                 the descriptor will be used. ENDIAN is carried over into
+                 inner descriptors during the sanitization process.
+                 Valid values are '<' for little and '>' for big endian.
+                 Must be a string.
+
+OFFSET --------- The offset within the structure the data is located at.
+                 Meant specifically for struct elements. When a descriptor
+                 is sanitized, this is removed from the descriptor it is
+                 in and moved into the parent descriptors ATTR_OFFS list.
+                 Must be an int.
+
+POINTER -------- Defines where in the buffer to read or write.
+                 The differences between POINTER and OFFSET are that
+                 POINTER is not removed from the descriptor it's in and
+                 POINTER is used relative to the root_offset whereas
+                 OFFSET is used relative to the offset of the parent.
+                 Must be an int, function or a nodepath.
+
+ENCODER -------- A function used to encode and return the buffer that was
+                 written to by the StreamAdapter's SUB_STRUCT attribute.
+                 This encoded buffer should be able to be decoded by this
+                 same descriptors DECODE function.
+                 Must be a function.
+
+STEPTREE ------- A descriptor of a node which is usually described by
+                 its parent. STEPTREE nodes arent elements of a structure,
+                 but are linked  to it. They are read/written in a
+                 different order than the elements of a structure.
+                 Parsers and serializers finish processing the tree they are
+                 currently in, then proceed to read/write all steptrees
+                 encountered in the order that they were encountered.
+                 Must be a descriptor.
+
+STEPTREE_ROOT -- Whether or not the current node is
+                 a root at which to build steptrees.
+                 If True, all nodes with STEPTREE entries within
+                 this node will be collected and their steptrees
+                 will be read/written at this tree level. This
+                 is only valid when used in 'container' fields.
+                 Must be a bool.
+
+
+
+These are keywords that are mainly used by supyrs implementation
+and are always autogenerated by sanitization routines. 
+
+ENTRIES -------- The number of integer keyed entries in the descriptor.
+                 Must be an int.
+
+NAME_MAP ------- Maps the given name of each node to the list index or
+                 __slot__ name that the node is actually stored under.
+                 Must be a dict.
+
+CASE_MAP ------- Maps the given case value of each sub-descriptor in a Union
+                 or Switch descriptor to the index it is stored under.
+                 Must be a dict.
+
+VALUE_MAP ------ Maps the given value of each possible enumeration value to
+                 the index that specific options descriptor is located in.
+                 This serves to enable a flat lookup time when trying
+                 to determine which enumerator option is selected.
+                 Must be a dict.
+
+ATTR_OFFS ------ A list containing the offset of each of structs attributes.
+                 Must be a list.
+
+ADDED ---------- A freeform entry that is neither expected to exist,
+                 nor have any specific structure. It is ignored by the
+                 sanitizer routine and is primarily meant for allowing
+                 developers to add their own data to a descriptor without
+                 having to make a new descriptor keyword for it.
+                 Can be anything.
+
+
+-------------------------------------------------------------------------------
+What is with the ALL_CAPS descriptor keys?
+
+This was a design decision based around the way a descriptor is used.
+Since the entries in a descriptor are intended to be static, they are
+essentially constants, which are typically denoted in all uppercase.
+
+Another reason this was done is so common names like size, name, type,
+and value are still available to be used as attribute names in a Block
+without having to resort to some awkward use of underscores or whatnot.
+
+The last reason is because it makes it very clear that you are intending to
+access an entry in the descriptor(rather than an attribute) when you do:
+    some_block.TYPE    or     some_block.NAME
+
