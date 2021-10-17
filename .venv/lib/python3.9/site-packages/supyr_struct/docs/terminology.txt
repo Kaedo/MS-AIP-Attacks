@@ -1,0 +1,112 @@
+
+-------------------------------------------------------------------------------
+Terminology:
+
+Block ------- An object designed to hold and express parsed binary data.
+              Blocks act as nodes in trees with the capacity to be a
+              parent node, meaning they hold other nodes.
+
+BlockDef ---- An object which builds a descriptor from given information,
+              checks it for errors, and makes sure it contains certain
+              items while generating other items automatically.
+              BlockDefs use this descriptor for building Blocks.
+
+descriptor -- A dictionary which serves as a collection of static attributes
+              that describe parsed binary data expressed as a node, one
+              of these being a FieldType instance under the key 'TYPE'.
+
+DataBlock --- A subclass of Block which is intended to hold and express
+              only one data value, such as a string or int. Subclasses
+              of this Block include WrapperBlock, BoolBlock, and EnumBlock.
+
+field ------- Any attribute in a Block which is parsable and serializable
+              with properties describing it given by a descriptor.
+              A field can be thought of as the abstract concept that a
+              descriptor and the FieldType in the descriptor describe.
+
+              While the term "node" refers specifically to an actual
+              python object, field refers to the properties that describe
+              the node. This is used(for example) when referring to a
+              'field' being parsed in a structure when the actual node
+              object doesnt exist yet, or when needing to just talk about
+              the properties of the object rather than the value of it.
+
+FieldType --- An immutable object with serveral properties that describe
+              a specific kind of field. These properties are mostly bools,
+              like is_str, is_struct, is_array, is_enum, is_block, etc,
+              but there are also properties like 'enc'(for string and
+              numerical encodings), 'endian'(the endianness of the bytes),
+              and 'delimiter'(the character a string is delimited with).
+
+              They also store a parser(for reading bytes from a buffer),
+              a decoder(for turning those bytes into a python object),
+              an encoder(for turning a python object into bytes), and a
+              serializer(for writing those bytes to a buffer).
+
+              See parsers.txt, serializers.txt, decoders.txt, encoders.txt,
+              sanitizer.txt, sizecalc.txt, and read the __init__ docstring
+              of supyr_struct.field_types.FieldType for more information.
+
+FrozenDict -- An immutable subclass of dict which runs an 'immutify'
+              routine on its contents on instantiation.
+              Immutify replaces mutable objects with an immutable
+              equivalent, making a FrozenDict as immutable as possible.
+
+ListBlock --- A subclass of list and Block. Behaves similarly to a list and
+              utilizes a descriptor to give names to each of its indices.
+
+node -------- An object at some location in a tree. This is the same node
+              concept used in data tree modelling.
+
+nodepath ---- A string that details a path through the nodes of a tree of
+              Blocks to some target attribute.
+
+              Take this nodepath for example: '..test.val'
+              from here(.), go to the parent(.), go to the 'test' attribute
+              of that parent, and return the 'val' attribute of that.
+
+              See the nodepaths.txt file for more information
+
+steptree ---- A steptree is a node parented to a Block in a specific way.
+              A steptree is also parsed and written in a sequence that
+              differs from regular nodes.
+
+              Rather than being placed into one of the indices of its
+              parent, a steptree is placed into its STEPTREE attribute.
+              The STEPTREE attribute can have an alias name, but it is
+              internally stored as an objects attribute rather than a
+              list entry.
+
+              Parsers/serializers finish parsing the tree they are
+              currently in, then proceed to parse/serialize all steptrees
+              encountered in the order that they were encountered.
+
+              If a field detects it's a "steptree_root" it will pass around
+              a list in kwargs under the key "steptree_parents", which is
+              passed to the parser/serializer of each node within this node.
+              If one of these subnodes has a STEPTREE entry in its descriptor,
+              the subnode will be appended to kwargs["steptree_root"].
+
+              After all the parsers/serializers for all nodes within a Block
+              have been called, the parents list will be looped over by the
+              parser/serializer that built it and calls the parser/serializer
+              of the STEPTREE attribute of each Block in parents.
+              The "steptree_parents" item is removed from kwargs when kwargs is
+              passed to the parser/serializer to prevent infinite recursion.
+
+              This change of read/write order is for situations where
+              one may, for example, have an array of 4 Y structures
+              where each struct describes another array of 4 Z structures,
+              but the first array of 4 is stored contiguously, so the
+              serialized arrangement of the structures looks like this:
+                  [ AY, BY, CY, DY ],
+                  [ AZ1, AZ2, AZ3, AZ4 ], 
+                  [ BZ1, BZ2, BZ3, BZ4 ], 
+                  [ CZ1, CZ2, CZ3, CZ4 ], 
+                  [ DZ1, DZ2, DZ3, DZ4 ]
+              This occurs often, and having a single STEPTREE attribute
+              takes care of any number of structures that need to be
+              read/written in this order since you can use an array or
+              container of any size for the STEPTREE attribute.
+
+-------------------------------------------------------------------------------

@@ -1,0 +1,53 @@
+2021-07-11 12:32:35,522:INFO:Starting of the encrypt process
+2021-07-11 12:32:35,522:INFO:Parsing and decrypting SPC private key
+2021-07-11 12:32:35,572:INFO:Parsing and decrypting RAC EnablingBits Element
+2021-07-11 12:32:35,618:INFO:Parsing and decrypting CLC EnablingBits Element
+2021-07-11 12:32:35,664:INFO:Parsing and decrypting EUL EnablingBits Element
+2021-07-11 12:32:35,666:INFO:Document Content Key is:19668169bff1fa2523e5b3c35d422580
+2021-07-11 12:32:35,667:INFO:Document Key is:19668169bff1fa2523e5b3c35d422580
+2021-07-11 12:32:35,667:INFO:Starting the encrypt process
+2021-07-11 12:32:35,667:INFO:Encrypt document with path output/dec_doc_mani.docx
+2021-07-11 12:32:35,672:INFO:Encrypt manipulated document
+2021-07-11 12:32:35,672:INFO:Document Content Key is:19668169bff1fa2523e5b3c35d422580
+2021-07-11 12:32:35,773:INFO:Succesfully created document
+2021-07-11 12:32:35,773:INFO:Finished the encrypt process
+2021-07-11 12:33:09,004:INFO:Starting of the decrypt process
+2021-07-11 12:33:09,005:INFO:Parsing and decrypting SPC private key
+2021-07-11 12:33:09,058:INFO:Parsing and decrypting RAC EnablingBits Element
+2021-07-11 12:33:09,104:INFO:Parsing and decrypting CLC EnablingBits Element
+2021-07-11 12:33:09,151:INFO:Parsing and decrypting EUL EnablingBits Element
+2021-07-11 12:33:09,155:INFO:Document Content Key is:19668169bff1fa2523e5b3c35d422580
+2021-07-11 12:33:09,156:INFO:Document Key is:19668169bff1fa2523e5b3c35d422580
+2021-07-11 12:33:09,158:INFO:Edit file with location output/dec_doc.docx
+2021-07-11 12:33:09,158:INFO:Finished the decrypt process
+2021-07-22 09:35:20,632:INFO:Starting of the decrypt process
+2021-07-22 09:35:20,636:INFO:Parsing and decrypting SPC private key
+2021-07-22 09:35:20,698:INFO:Parsing and decrypting RAC EnablingBits Element
+2021-07-22 09:35:20,746:INFO:Parsing and decrypting CLC EnablingBits Element
+2021-07-22 09:35:20,792:INFO:Parsing and decrypting EUL EnablingBits Element
+2021-07-22 09:35:20,823:INFO:Document Content Key is:19668169bff1fa2523e5b3c35d422580
+2021-07-22 09:35:20,823:INFO:Document Key is:19668169bff1fa2523e5b3c35d422580
+2021-07-22 09:35:20,843:INFO:Edit file with location output/dec_doc.docx
+2021-07-22 09:35:20,843:INFO:Finished the decrypt process
+2021-10-16 12:57:01,344:INFO:Starting of the decrypt process
+2021-10-16 12:57:01,344:INFO:Parsing and decrypting SPC private key
+2021-10-16 12:57:01,392:INFO:Parsing and decrypting RAC EnablingBits Element
+2021-10-16 12:57:01,437:INFO:Parsing and decrypting CLC EnablingBits Element
+2021-10-16 12:57:01,481:INFO:Parsing and decrypting EUL EnablingBits Element
+2021-10-16 12:57:01,487:INFO:Document Content Key is:19668169bff1fa2523e5b3c35d422580
+2021-10-16 12:57:01,487:INFO:Document Key is:19668169bff1fa2523e5b3c35d422580
+2021-10-16 12:57:01,492:INFO:Edit file with location output/dec_doc.docx
+2021-10-16 12:57:01,492:INFO:Finished the decrypt process
+2021-10-16 12:58:05,392:INFO:Starting of the encrypt process
+2021-10-16 12:58:05,392:INFO:Parsing and decrypting SPC private key
+2021-10-16 12:58:05,439:INFO:Parsing and decrypting RAC EnablingBits Element
+2021-10-16 12:58:05,483:INFO:Parsing and decrypting CLC EnablingBits Element
+2021-10-16 12:58:05,527:INFO:Parsing and decrypting EUL EnablingBits Element
+2021-10-16 12:58:05,530:INFO:Document Content Key is:19668169bff1fa2523e5b3c35d422580
+2021-10-16 12:58:05,530:INFO:Document Key is:19668169bff1fa2523e5b3c35d422580
+2021-10-16 12:58:05,530:INFO:Starting the encrypt process
+2021-10-16 12:58:05,530:INFO:Encrypt document with path output/dec_doc Kopie.docx
+2021-10-16 12:58:05,535:INFO:Encrypt manipulated document
+2021-10-16 12:58:05,535:INFO:Document Content Key is:19668169bff1fa2523e5b3c35d422580
+2021-10-16 12:58:05,617:INFO:Succesfully created document
+2021-10-16 12:58:05,617:INFO:Finished the encrypt process

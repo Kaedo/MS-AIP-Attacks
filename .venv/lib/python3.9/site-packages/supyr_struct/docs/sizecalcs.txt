@@ -1,0 +1,80 @@
+
+-------------------------------------------------------------------------------
+What is a sizecalc?
+
+Sizecalcs are functions which calculate the size of a type of field.
+The units are usually bytes, but are whatever the fields size is measured in.
+Arrays and other container fields are measured by their number of elements,
+bitints are measured in bits, and everything else is measured in bytes.
+
+
+A sizecalc is usually very simple, like in the following example:
+
+def str_sizecalc(self, node, **kwargs):
+    '''Returns the byte size of a string if it were encoded to bytes.'''
+    return len(node)*self.size
+
+
+But they can sometimes get a bit more complex:
+
+def big_sint_sizecalc(self, node, **kwargs):
+    '''
+    Returns the number of bytes required to represent a twos signed integer.
+    NOTE: returns a byte size of 1 for the int 0
+    '''
+    # add 8 bits for rounding up, and 1 for the sign bit
+    return (node.bit_length() + 9) // 8
+
+
+Or even more complex:
+
+def delim_utf_sizecalc(self, node, **kwargs):
+    '''
+    Returns the byte size of a UTF string if it were encoded to bytes.
+
+    Only use this for UTF8 and UTF16 as it is slower than delim_str_sizecalc.
+    '''
+    nodelen = len(node.encode(encoding=self.enc))
+
+    # dont add the delimiter size if the string is already delimited
+    if node.endswith(self.str_delimiter):
+        return nodelen
+    return nodelen + self.size
+
+
+As you can see though, even the more complex sizecalcs remain fairly simple.
+
+
+-------------------------------------------------------------------------------
+Where and why are they used?
+
+A sizecalc is used when a Blocks get_size method is called and SIZE doesnt
+exist in the descriptor(it will need to be calculated).
+
+A sizecalc is also called when a Blocks set_size method is called and
+a new size is not provided. In this situation the sizecalc is used to
+calculate a new value to set the size to.
+
+
+-------------------------------------------------------------------------------
+What positional and keyword arguments should a sizecalc
+function expect and what are their purposes?
+
+required positional:
+    self -------- The FieldType instance whose sizecalc function is being run.
+
+    node -------- The node whose size is being calculated.
+
+keyword:
+    parent ------ The parent Block of the node argument. This is provided
+                  for the scenarios where node is not an instance of Block.
+                  If this argument is to be considered valid, attr_index must
+                  be provided and valid as well.
+
+    attr_index -- The index that node can be found under in parent by doing:
+                      parent[attr_index].
+                  If this is None, assume the parent argument is not valid.
+
+Sizecalc functions are allowed to be given arbitrary keyword arguments
+in order to be as versatile as they need to be. Because of this they must
+make use of **kwargs since unused keyword arguments may be provided.

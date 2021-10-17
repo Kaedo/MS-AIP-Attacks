@@ -1,6 +1,6 @@
 <XrML version="1.2" xmlns="">
 <BODY type="LICENSE" version="3.0">
-<ISSUEDTIME>2019-11-07T13:08</ISSUEDTIME>
+<ISSUEDTIME>2020-12-15T04:35</ISSUEDTIME>
 <DESCRIPTOR>
 <OBJECT type="Machine-Certificate">
 <ID type="MS-GUID">{92992236-A920-4152-ABAC-1C83467C5A57}</ID>
@@ -32,7 +32,7 @@
 <ISSUEDPRINCIPALS>
 <PRINCIPAL>
 <OBJECT type="Machine-Unique-Identifier">
-<ID type="MS-GUID">{784364db-38b2-4968-b30c-b7bfe71cdb29}</ID>
+<ID type="MS-GUID">{f28dee2b-f859-4b33-84b5-29aa8b7eddc5}</ID>
 <NAME>Machine</NAME>
 </OBJECT>
 <PUBLICKEY>
@@ -41,7 +41,7 @@
 <VALUE encoding="integer32">65537</VALUE>
 </PARAMETER>
 <PARAMETER name="modulus">
-<VALUE encoding="base64" size="2048">7ck/zanTN8WNnEj2LSW6I+MiHRs6Zv1Qh9B+13ZbdK8XfAaEHyAxAr+szGQ6+MXNFrDiLIQG5a6QngUNwlr+3PF3JEb41OocDGsfXSZWYg/h/WdY3yIQtFqhFiKGtn88hqhsIZpXdJ6UJlYWNFz00I+HHQ1pd6jlvM7mcHY+5GK+yZ7IYgUGXsEx5R4CAu+wLk9a0OjWZGVo+wFJzlPSufF0lnksurMHnco0LueK25UkpszqEmIDyJ8Vs5+CGiJUl0RFdvKLOwWdrCaJqRtDQw1G9oCI9Z/uLonicgeTt+JHjoE/0p7tQG89oeKSC9xUadIQyAidfTFgjl6h2razyQ==</VALUE>
+<VALUE encoding="base64" size="2048">TUBWQPCygEssz9r8ibs/30CNMmqsr1xD6D0vaObd9dLnK24F5amAs1pAAcIIJ0AEGMBrcW0lZ+vusJgiITYgBjcrLEGhKK69FcEX2Qp9VfGcLjGjsYrusBTRBRBZBseh2vc5vLUzxqN/r/Eprs5waO8bNF9afjWmRREptLLG1xZETDR+8eX/te3lubXLkAtasfjRkTUHLdxCldXpIEKguKAV/k6fOTt4jQ0rGN6L9+h0hprhEh0G++ZwK8F1MzyaQjm3fCCAhnxmZovE0LhtN6zYh4+3hIm4HuVlUi4whgs6FV7Zn8BeLL5iOM5EVhgrS5dxgQoAdhSgM/jvzIxy5A==</VALUE>
 </PARAMETER>
 </PUBLICKEY>
 <DIGEST>
@@ -49,9 +49,9 @@
 <PARAMETER name="codingtype">
 <VALUE encoding="string">surface-coding</VALUE>
 </PARAMETER>
-<VALUE encoding="base64" size="160">vuaf12IIJMgEM2o1gIwu+VUm6d1pAGMAcgBvAHMAbwBmAHQAXABDAHIAeQBwAHQAbwBnAHIAYQBwAGgAeQAAAA==</VALUE>
+<VALUE encoding="base64" size="160">5AetyJ8ptgepNmkK6uESjIv5324AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</VALUE>
 </DIGEST>
-<SECURITYLEVEL name="Platform" value="2.10.0.18362" />
+<SECURITYLEVEL name="Platform" value="2.10.0.19042" />
 <SECURITYLEVEL name="Manufacturer" value="Microsoft Corporation mcoregen DLL 999999.10.0.10011 (RMS Client v3.0 Desktop Security Processor)" />
 <SECURITYLEVEL name="Repository" value="Microsoft Corporation Windows RMS Client v3.0 secure repository 999999.10.0.10011" />
 </PRINCIPAL>
@@ -63,10 +63,10 @@
 <PARAMETER name="codingtype">
 <VALUE encoding="string">surface-coding</VALUE>
 </PARAMETER>
-<VALUE encoding="base64" size="160">ZQqK+t/uDttFcDkJ1qQ6p5BZFno=</VALUE>
+<VALUE encoding="base64" size="160">70dd3JeHevpp6G1O+E20nFi7fSI=</VALUE>
 </DIGEST>
 <ALGORITHM>RSA PKCS#1-V1.5</ALGORITHM>
-<VALUE encoding="base64" size="1024">FOfW3kFoJaWqjFXY1SNszeFGcSuMgrbbIVClXGqnodbQi5WZaHbxqMnPPWkMAIxC/ovsrvmRWbJw/ii0KSXbyvSx/RRi+4IA+TcrhTgM7lzjLBqkNfCYp2p5XJHlnCGvLBDGDjgjhNKkUAGmHaFiFzv9Arhx4nKWpE8B88UAPbo=</VALUE>
+<VALUE encoding="base64" size="1024">S8G7Jccsv2tx3yBlIz1S3ShJzOBboOhfnGWQp+SNWRODlDNjU1MxZgLRPELufnm0sMSvLwcaD2SggmixkkoX/3Soq9CksMq2rS7T45Zy0Vm31OxDhqeZlewY/utAMblaXXJlHmSyKEn0trPjtm2xwXJYVu/NTL1HGwmAZKMR+pQ=</VALUE>
 </SIGNATURE>
 </XrML>
 <XrML xmlns="" version="1.2">

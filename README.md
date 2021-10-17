@@ -13,6 +13,10 @@
   - [04 - Modify and Reprotect an AIP Word file](https://www.youtube.com/watch?v=6vCPAFJB_gU)
 
 ### Note
+- Requierement
+	- parse.py access a .NET dll via [pythonnet](https://pythonnet.github.io/)
+	- you need access to a .NET Cli. For mac and linux you can install it this [opensource implementation.](https://www.mono-project.com/docs/about-mono/supported-platforms/macos/)
+	- Installation guide of the [pythonnet lib:](https://github.com/pythonnet/pythonnet/wiki/Troubleshooting-on-Windows,-Linux,-and-OSX)
 - Bash scripts
 	- requires adaption to non NixOS linux systems
 	- Input files have a specific name scheme ({clc,rac,eul}.drm)
